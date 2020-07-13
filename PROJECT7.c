@@ -42,7 +42,7 @@ int main()
 	printf("\n ------------------  Welcome %s to C Program Quiz Game --------------------------",playername);
     printf("\n\n Here are some tips you might wanna know before playing:");
     printf("\n >> There are 2 rounds in this Quiz Game,WARMUP ROUND & CHALLANGE ROUND");
-    printf("\n >> In warmup round you will be asked a total of 5 questions to test your");
+    printf("\n >> In warmup round you will be asked a total of 8 questions to test your");
     printf("\n    C knowledge. You are eligible to play the game if you give atleast 5");
     printf("\n    right answers, otherwise you can't proceed further to the Challenge Round.");
     printf("\n >> Your game starts with CHALLANGE ROUND. In this round you will be asked a");
@@ -199,7 +199,7 @@ game:
 			 break;getch();}
 		else
 		       {printf("\n\nWrong!!! The correct answer isA.Infinite loop");getch();
-		       goto score;
+		       getch();
 		       break;}
 
 		case 2:
@@ -210,7 +210,7 @@ game:
 			 break;}
 		else
 		       {printf("\n\nWrong!!! The correct answer is B.2");getch();
-		      goto score;
+		      getch();
 		       break;
 		       }
 
@@ -222,7 +222,7 @@ game:
 			 break;}
 		else
 		       {printf("\n\nWrong!!! The correct answer is A.7 7.000000");getch();
-		       goto score;
+		       getch();
 		       break;}
 
         case 4:
@@ -234,7 +234,7 @@ game:
 		else
 		       {
                 printf("\n\nWrong!!! The correct answer is B.char *p = (char*)malloc(100)");getch();
-		       goto score;
+		       getch();
 		       break;
 		       }
 
@@ -247,7 +247,6 @@ game:
 		       {
 		           printf("\n\nWrong!!! The correct answer is 1 time");
 		       getch();
-		       goto score;
 		       break;
 		       }
 
@@ -270,7 +269,7 @@ game:
 			 break;}
 		else
 		       {printf("\n\nWrong!!! The correct answer is D.Infinite times");getch();
-		       goto score;
+		       getch();
 		       break;}
 
         case 8:
@@ -280,7 +279,7 @@ game:
 			{printf("\n\nCorrect!!!");countr++;getch(); break;}
 		else
 		       {printf("\n\nWrong!!! The correct answer is C.1");getch();
-		       goto score;
+		       getch();
 		       break;}
 
         case 9:
@@ -291,7 +290,7 @@ game:
 			break;}
 		else
 		       {printf("\n\nWrong!!! The correct answer is B.00--10--20--30--40--");getch();
-		       goto score;
+		       getch();
 		       break;}
 
         case 10:
