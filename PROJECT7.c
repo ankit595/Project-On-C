@@ -5,12 +5,16 @@
 #include<string.h>
 void show_record();
 void edit_score(float , char []);
+struct record{
+	char name[20];
+	float score;
+	}record;
 int main()
 {
 	 int countr,r,r1,count,i,n;
      float score;
      char choice;
-     char playername[20];
+     char name[20];
      mainhome:
      system("cls");
      printf("\t\t\tC PROGRAM QUIZ GAME\n");
@@ -38,8 +42,8 @@ int main()
      system("cls");
 
     printf("\n\n\n\n\n\t\t\tResister your name:");
-     gets(playername);
-	printf("\n ------------------  Welcome %s to C Program Quiz Game --------------------------",playername);
+    gets(record.name);
+	printf("\n ------------------  Welcome %s to C Program Quiz Game --------------------------",record.name);
     printf("\n\n Here are some tips you might wanna know before playing:");
     printf("\n >> There are 2 rounds in this Quiz Game,WARMUP ROUND & CHALLANGE ROUND");
     printf("\n >> In warmup round you will be asked a total of 8 questions to test your");
@@ -179,7 +183,7 @@ int main()
 	}    
 	test:
      system("cls");
-     printf("\n\n\t*** CONGRATULATION %s you are eligible to play the Game ***",playername);
+     printf("\n\n\t*** CONGRATULATION %s you are eligible to play the Game ***",record.name);
      printf("\n\n\n\n\t!Press any key to Start the Game!");
      if(toupper(getch())=='p')
 		{goto game;}
@@ -305,13 +309,13 @@ game:
 			    
 	score:
     system("cls");
-	score=(float)countr*10;
-	if(score>0.00 && score<100)
+	record.score=(float)countr*10;
+	if(record.score>0.00 && record.score<100)
 	{
 	   printf("\n\n\t\t**************** CONGRATULATION *****************");
-	     printf("\n\t You scored %.2f points",score);goto go;}
+	     printf("\n\t You scored %.2f points",record.score);goto go;}
 
-	 else if(score==100.00)
+	 else if(record.score==100.00)
 	{
 	    printf("\n\n\n \t\t**************** CONGRATULATION ****************");
 	    printf("\n\t\t\t\t YOU ARE A GENIUS!!!!!!!!!");
@@ -330,7 +334,7 @@ game:
 		goto home;
 	else
 		{
-		edit_score(score,playername);
+		edit_score(record.score,record.name);
 		goto mainhome;}}}
 
 void show_record()
@@ -339,10 +343,11 @@ void show_record()
 	float scr;
 	FILE *f;
 	f=fopen("score.txt","r");
-	fscanf(f,"%s%f",&name,&scr);
-	printf("\n\n\t\t*************************************************************");
-	printf("\n\n\t\t %s has secured the Highest Score %0.2f",name,scr);
-	printf("\n\n\t\t*************************************************************");
+	while(fread(&record,sizeof(record),1,f)==1)
+	{
+		printf("%s\t",record.name);
+		printf("%f\n",record.score);
+	}
 	fclose(f);
 	getch();}
 
@@ -352,13 +357,6 @@ void edit_score(float score, char plnm[20])
 	float sc;
 	char nm[20];
 	FILE *f;
-	f=fopen("score.txt","r");
-	fscanf(f,"%s%f",&nm,&sc);
-	if (score>=sc)
-	  { sc=score;
-	    fclose(f);
-	    f=fopen("score.txt","w");
-	    fprintf(f,"%s\n%.2f",plnm,sc);
-	    fclose(f);}}	   
-
-
+	f=fopen("score.txt","w");
+	fprintf(f,"%s\n%.2f",plnm,sc);
+	fclose(f);}	   
