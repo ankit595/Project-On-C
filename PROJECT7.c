@@ -343,10 +343,9 @@ void show_record()
 	float scr;
 	FILE *f;
 	f=fopen("score.txt","r");
-	while(fread(&record,sizeof(record),1,f)==1)
+	while(fread(&record,sizeof(record),1,f)==EOF)
 	{
-		printf("%s\t",record.name);
-		printf("%f\n",record.score);
+		printf("%s\t%.2f\n",record.name,record.score);
 	}
 	fclose(f);
 	getch();}
@@ -358,5 +357,5 @@ void edit_score(float score, char plnm[20])
 	char nm[20];
 	FILE *f;
 	f=fopen("score.txt","w");
-	fprintf(f,"%s\n%.2f",plnm,sc);
+	fprintf(f,"%s%.2f",plnm,sc);
 	fclose(f);}	   
